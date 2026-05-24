@@ -1,0 +1,13 @@
+@layer base {
+    .nav {
+        @apply flex justify-center items-center h-12 w-12 sm:w-full;
+    }
+
+    .nav:hover {
+    }
+
+    a.nav svg,
+    svg path {
+        @apply fill-texto-main h-[30px] w-[30px];
+    }
+}

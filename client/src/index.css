@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+    --font-principal: "Fira Sans", sans-serif;
+    --color-fundo: #f1f1e7;
+    --color-texto-main: #120f22;
+    --color-cinza: #565072;
+    --color-discreto: rgb(86 80 114 / 30%);
+    --color-destaque: #8c52ff;
+}
+
+@layer base {
+    body {
+        @apply min-h-full w-full bg-fundo font-principal text-texto-main;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-fundo: #120f22;
+        --color-texto-main: #f1f1e7;
+    }
+}
+
+@import "./components/Navbar.css"
