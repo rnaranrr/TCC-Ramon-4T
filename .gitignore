@@ -1,0 +1,33 @@
+# --- DEPENDÊNCIAS (Node.js) ---
+# Ignora as dependências tanto da raiz, do front quanto do back
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# --- FRONTEND (React + Vite) ---
+# Ignora os arquivos de build locais e a pasta de cache do Vite
+client/dist/
+client/.vite/
+.vite/
+
+# --- VARIÁVEIS DE AMBIENTE (Segurança) ---
+# Nunca suba senhas, chaves de API ou dados sensíveis para o GitHub
+.env
+.env.local
+.env.*.local
+client/.env
+client/.env.local
+server/.env
+server/.env.local
+
+# --- SISTEMA OPERACIONAL ---
+# Arquivos inúteis gerados pelo Windows/Mac
+.DS_Store
+Thumbs.db
+
+# --- LOGS ---
+# Logs de erro que o npm gera se algo der errado
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
