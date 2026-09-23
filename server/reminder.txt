@@ -1,0 +1,2 @@
+npm i express mysql2 express-session formidable bcryptjs sequelize cors dotenv
+npm i -D nodemon sequelize-cli
