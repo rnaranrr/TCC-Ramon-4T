@@ -1,2 +1,5 @@
 npm i express mysql2 express-session formidable bcryptjs sequelize cors dotenv
 npm i -D nodemon sequelize-cli
+
+git config --global user.name "rnaranrr"
+git config --global user.email "matheus.r.carv+github@outlook.com"
