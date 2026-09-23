@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-//importa conexão com o banco
-import sequelize from './config/database.js';
+
+// banco
+import { database } from './models/index.js';
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors());
@@ -19,17 +20,23 @@ app.get('/', (req, res) => {
     res.json({ message: 'API rodando' });
 });
 
-// Autenticar no banco de dados antes de subir o servidor
+// Autenticar no banco de dados e sincronizar as tabelas
 async function startServer() {
     try {
-        await sequelize.authenticate();
-        console.log('Conexão com o banco MySQL estabelecida');
-        
+        // 1. Testa a conexão com o banco MySQL
+        await database.authenticate();
+        console.log('Conexão com o banco MySQL estabelecida com sucesso.');
+
+        // 2. Cria/sincroniza todas as tabelas e relacionamentos
+        await database.sync({ force: false }); 
+        console.log('Todas as tabelas foram criadas/sincronizadas com sucesso!');
+
+        // 3. Inicia o servidor HTTP
         app.listen(PORT, () => {
             console.log(`Servidor rodando na porta ${PORT}`);
         });
     } catch (error) {
-        console.error('Erro ao conectar no banco de dados:', error);
+        console.error('Erro ao conectar ou sincronizar o banco de dados:', error);
     }
 }
 
